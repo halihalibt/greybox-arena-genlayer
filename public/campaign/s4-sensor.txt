@@ -1,0 +1,2 @@
+GREYBOX / FICTIONAL CASE EXHIBIT
+During the disputed window, the direct gas sensor read 0.02 units against a fuel-leak threshold of 0.10. It did not detect a leak.

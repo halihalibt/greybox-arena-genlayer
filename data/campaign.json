@@ -1,0 +1,2189 @@
+[
+  {
+    "id": "silent-orbit",
+    "title": {
+      "zh": "失联空间站",
+      "en": "Silent Orbit"
+    },
+    "subtitle": {
+      "zh": "无人值守，不代表已经停机。",
+      "en": "An empty station can still be alive."
+    },
+    "chapter": "01",
+    "difficulty": 1,
+    "mechanic": "corroborate",
+    "accent": "#e6b86d",
+    "budget": 4,
+    "slots": 2,
+    "briefing": {
+      "zh": "空间站失去语音联系，调查局据此宣布它已停用。找到两份相互印证的材料，推翻初判。",
+      "en": "The bureau declared Station 17 offline after losing voice contact. Find two corroborating exhibits to overturn the finding."
+    },
+    "objective": {
+      "zh": "证明 9 月 27 日 20:00 后核心系统仍在运行。",
+      "en": "Establish essential system activity after 20:00 on September 27."
+    },
+    "defense": {
+      "zh": "人员已经撤离。即使有热量，也可能只是停机后的余温。",
+      "en": "The crew left. Any warmth may be residual heat after shutdown."
+    },
+    "innovation": {
+      "zh": "学会互证",
+      "en": "Corroboration"
+    },
+    "hint": {
+      "zh": "近期设备日志是起点，再找另一种来源；让反驳对应你的第二份证据。",
+      "en": "Start with recent machine data, add another source, and match the rebuttal to that source."
+    },
+    "facts": {
+      "power": "Do the readings show repeated active air circulation after 20:00 on September 27, 2026?",
+      "maintained": "Does a completed maintenance record explicitly say air circulation returned to active service that evening?",
+      "warm": "Does the image show warm radiator readings captured at 21:11 on September 27, 2026?"
+    },
+    "evidence": [
+      {
+        "id": "s1-power",
+        "title": {
+          "zh": "电力遥测",
+          "en": "Power telemetry"
+        },
+        "summary": {
+          "zh": "每十分钟回传一次的设备日志。",
+          "en": "Machine readings repeated every ten minutes."
+        },
+        "body": {
+          "zh": "9 月 27 日 20:56、21:06、21:16，功率分别为 4.8、4.8、4.7 kW，空气循环连续标记为运行。",
+          "en": "On September 27, 2026 at 20:56, 21:06 and 21:16 UTC+8, draw was 4.8, 4.8 and 4.7 kW; air circulation remained active."
+        },
+        "cost": 2,
+        "group": "station-sensor",
+        "kind": "web",
+        "truth": [
+          "power"
+        ],
+        "checks": [
+          "power"
+        ],
+        "url": "/campaign/s1-power.txt",
+        "sha256": "206210afee3c6af4cd289a020b9e597a17c32ae205ffe1b95e849ea678182d46"
+      },
+      {
+        "id": "s1-order",
+        "title": {
+          "zh": "维护工单",
+          "en": "Maintenance ticket"
+        },
+        "summary": {
+          "zh": "一张在失联之后关闭的工单。",
+          "en": "A ticket closed after contact was lost."
+        },
+        "body": {
+          "zh": "9 月 27 日 21:08，无人值守的空气循环维护完成，系统恢复运行。工单 ST17-MNT-0927。",
+          "en": "At 21:08 UTC+8 on September 27, 2026, uncrewed air-circulation maintenance was completed and the system returned to active service. ST17-MNT-0927."
+        },
+        "cost": 2,
+        "group": "engineering",
+        "kind": "record",
+        "truth": [
+          "maintained"
+        ],
+        "checks": [
+          "maintained"
+        ]
+      },
+      {
+        "id": "s1-thermal",
+        "title": {
+          "zh": "轨道热像",
+          "en": "Orbital thermal scan"
+        },
+        "summary": {
+          "zh": "两个散热区仍呈暖色。",
+          "en": "Two radiator zones still register warmth."
+        },
+        "body": {
+          "zh": "扫描显示 21:11 的散热区温度；热量本身不能区分运行和余温。",
+          "en": "Inspect the image's timestamp and radiator temperatures. Warmth alone cannot distinguish operation from residual heat."
+        },
+        "cost": 2,
+        "group": "orbital-scan",
+        "kind": "image",
+        "truth": [
+          "warm"
+        ],
+        "checks": [
+          "warm"
+        ],
+        "url": "/campaign/thermal.png",
+        "sha256": "a72ee71042d0db87a0e89c337c23c2c5921f87bad51fddbedf263878d042070c"
+      },
+      {
+        "id": "s1-crew",
+        "title": {
+          "zh": "离站登记",
+          "en": "Crew departure"
+        },
+        "summary": {
+          "zh": "人员撤离记录有正式盖章。",
+          "en": "An official record of the crew leaving."
+        },
+        "body": {
+          "zh": "人员在 9 月 22 日离站。此记录没有设备停机指令。",
+          "en": "The crew left on September 22. This record contains no equipment shutdown order."
+        },
+        "cost": 1,
+        "group": "crew-office",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "power"
+        ]
+      },
+      {
+        "id": "s1-poster",
+        "title": {
+          "zh": "旧宣传档案",
+          "en": "Old publicity file"
+        },
+        "summary": {
+          "zh": "照片上的空间站灯火通明。",
+          "en": "A brilliantly lit station in the archive."
+        },
+        "body": {
+          "zh": "宣传照拍摄于 2024 年，不能证明当前运行状态。",
+          "en": "This publicity image was captured in 2024 and says nothing about current operation."
+        },
+        "cost": 1,
+        "group": "publicity",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "warm"
+        ]
+      }
+    ],
+    "tactics": [
+      {
+        "id": "uncrewed",
+        "label": {
+          "zh": "无人也能运行",
+          "en": "Uncrewed can be active"
+        },
+        "detail": {
+          "zh": "回应人员撤离的质疑。",
+          "en": "Answer the crew objection."
+        }
+      },
+      {
+        "id": "residual",
+        "label": {
+          "zh": "用供电排除余温",
+          "en": "Test the residual-heat claim"
+        },
+        "detail": {
+          "zh": "让供电记录与热像互证。",
+          "en": "Corroborate the scan with repeated power readings."
+        }
+      },
+      {
+        "id": "appearance",
+        "label": {
+          "zh": "强调空间站的外观",
+          "en": "Rely on appearance"
+        },
+        "detail": {
+          "zh": "外观看起来仍然完好。",
+          "en": "The station still looks intact."
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "overturn",
+        "label": {
+          "zh": "推翻停用初判",
+          "en": "Overturn the offline finding"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "focus": [],
+    "sequence": [],
+    "resources": [],
+    "resource_budget": 0,
+    "routes": [
+      {
+        "id": "maintenance",
+        "title": {
+          "zh": "无人运行",
+          "en": "Uncrewed operation"
+        },
+        "facts": [
+          "power",
+          "maintained"
+        ],
+        "tactic": "uncrewed",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "",
+        "sequence": [],
+        "allocation": {}
+      },
+      {
+        "id": "thermal",
+        "title": {
+          "zh": "热像互证",
+          "en": "Thermal corroboration"
+        },
+        "facts": [
+          "power",
+          "warm"
+        ],
+        "tactic": "residual",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "",
+        "sequence": [],
+        "allocation": {}
+      }
+    ],
+    "example": {
+      "evidence": [
+        "s1-power",
+        "s1-order"
+      ],
+      "tactic": "uncrewed",
+      "target": "overturn",
+      "focus": "",
+      "sequence": [],
+      "allocation": {},
+      "argument": ""
+    },
+    "manifest_hash": "6d30eb31a75ed36e89636319379fa6569bf1369f31323f245ed9dc11d1d096ed",
+    "manifest": {
+      "schema": 1,
+      "id": "silent-orbit",
+      "version": 1,
+      "title": "Silent Orbit",
+      "objective": "Establish essential system activity after 20:00 on September 27.",
+      "budget": 4,
+      "slots": 2,
+      "facts": {
+        "power": "Do the readings show repeated active air circulation after 20:00 on September 27, 2026?",
+        "maintained": "Does a completed maintenance record explicitly say air circulation returned to active service that evening?",
+        "warm": "Does the image show warm radiator readings captured at 21:11 on September 27, 2026?"
+      },
+      "tactics": [
+        "uncrewed",
+        "residual",
+        "appearance"
+      ],
+      "targets": [
+        "overturn"
+      ],
+      "focus": [],
+      "sequence": [],
+      "resources": [],
+      "resource_budget": 0,
+      "routes": [
+        {
+          "id": "maintenance",
+          "facts": [
+            "power",
+            "maintained"
+          ],
+          "tactic": "uncrewed",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "",
+          "sequence": [],
+          "allocation": {}
+        },
+        {
+          "id": "thermal",
+          "facts": [
+            "power",
+            "warm"
+          ],
+          "tactic": "residual",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "",
+          "sequence": [],
+          "allocation": {}
+        }
+      ],
+      "evidence": [
+        {
+          "id": "s1-power",
+          "kind": "web",
+          "cost": 2,
+          "group": "station-sensor",
+          "content": "On September 27, 2026 at 20:56, 21:06 and 21:16 UTC+8, draw was 4.8, 4.8 and 4.7 kW; air circulation remained active.",
+          "checks": [
+            "power"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s1-power.txt",
+          "sha256": "206210afee3c6af4cd289a020b9e597a17c32ae205ffe1b95e849ea678182d46"
+        },
+        {
+          "id": "s1-order",
+          "kind": "record",
+          "cost": 2,
+          "group": "engineering",
+          "content": "At 21:08 UTC+8 on September 27, 2026, uncrewed air-circulation maintenance was completed and the system returned to active service. ST17-MNT-0927.",
+          "checks": [
+            "maintained"
+          ]
+        },
+        {
+          "id": "s1-thermal",
+          "kind": "image",
+          "cost": 2,
+          "group": "orbital-scan",
+          "content": "Inspect the image's timestamp and radiator temperatures. Warmth alone cannot distinguish operation from residual heat.",
+          "checks": [
+            "warm"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/thermal.png",
+          "sha256": "a72ee71042d0db87a0e89c337c23c2c5921f87bad51fddbedf263878d042070c"
+        },
+        {
+          "id": "s1-crew",
+          "kind": "record",
+          "cost": 1,
+          "group": "crew-office",
+          "content": "The crew left on September 22. This record contains no equipment shutdown order.",
+          "checks": [
+            "power"
+          ]
+        },
+        {
+          "id": "s1-poster",
+          "kind": "record",
+          "cost": 1,
+          "group": "publicity",
+          "content": "This publicity image was captured in 2024 and says nothing about current operation.",
+          "checks": [
+            "warm"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "midnight-cargo",
+    "title": {
+      "zh": "零点货运",
+      "en": "Midnight Cargo"
+    },
+    "subtitle": {
+      "zh": "迟到的是货物，还是记录？",
+      "en": "Was the cargo late—or just its paperwork?"
+    },
+    "chapter": "02",
+    "difficulty": 2,
+    "mechanic": "timeline",
+    "accent": "#80bbdf",
+    "budget": 5,
+    "slots": 3,
+    "briefing": {
+      "zh": "一艘运输艇被指控错过午夜截止时间。航拍、登记和船钟采用了不同的时间口径。还原经过，再提交申诉。",
+      "en": "A cargo shuttle allegedly missed a midnight deadline. The camera, registry and ship clock use different time references. Reconstruct the events."
+    },
+    "objective": {
+      "zh": "证明货物在当地时间 00:00 前抵港，并排好事件顺序。",
+      "en": "Show arrival before local midnight and put the events in order."
+    },
+    "defense": {
+      "zh": "入库单写着 00:12，所以这批货至少迟到了十二分钟。",
+      "en": "The warehouse receipt says 00:12. The cargo was at least twelve minutes late."
+    },
+    "innovation": {
+      "zh": "重排时间线",
+      "en": "Reorder the timeline"
+    },
+    "hint": {
+      "zh": "航拍使用 UTC，港口使用 UTC+8；到港和入库不是同一个事件。",
+      "en": "The camera uses UTC; the port uses UTC+8. Docking and filing are different events."
+    },
+    "facts": {
+      "arrival": "Does the source record physical arrival on September 27 at 15:50 UTC or 23:50 UTC+8?",
+      "offset": "Does the source establish that local port time is UTC+8?",
+      "filing": "Does the source distinguish filing at 00:12 on September 28 from physical docking earlier?",
+      "dispatch": "Does the source record departure at 23:40 local time on September 27?"
+    },
+    "evidence": [
+      {
+        "id": "s2-camera",
+        "title": {
+          "zh": "泊位航拍日志",
+          "en": "Dock camera log"
+        },
+        "summary": {
+          "zh": "相机时间：15:50 UTC。",
+          "en": "Camera time: 15:50 UTC."
+        },
+        "body": {
+          "zh": "9 月 27 日 15:50 UTC，运输艇实体靠上泊位；此前的镜头为空泊位。",
+          "en": "At 15:50 UTC on September 27, 2026, the cargo shuttle physically docked. The earlier frame shows an empty berth."
+        },
+        "cost": 2,
+        "group": "camera",
+        "kind": "web",
+        "truth": [
+          "arrival"
+        ],
+        "checks": [
+          "arrival"
+        ],
+        "url": "/campaign/s2-camera.txt",
+        "sha256": "36af6560baf7e1beeee64ca78e854b3b7a4efac8bf713e1d8648803ab2dd2cad"
+      },
+      {
+        "id": "s2-clock",
+        "title": {
+          "zh": "港口校时单",
+          "en": "Port clock standard"
+        },
+        "summary": {
+          "zh": "船钟和港口钟的换算口径。",
+          "en": "The offset between ship and port clocks."
+        },
+        "body": {
+          "zh": "港口时间采用 UTC+8；相机采用 UTC。相机 15:50 对应港口同日 23:50。",
+          "en": "The port uses UTC+8; the camera uses UTC. Camera time 15:50 equals 23:50 at the port on the same date."
+        },
+        "cost": 1,
+        "group": "time-service",
+        "kind": "record",
+        "truth": [
+          "offset"
+        ],
+        "checks": [
+          "offset"
+        ]
+      },
+      {
+        "id": "s2-receipt",
+        "title": {
+          "zh": "入库回执",
+          "en": "Warehouse receipt"
+        },
+        "summary": {
+          "zh": "一个很醒目的 00:12 印章。",
+          "en": "A conspicuous 00:12 stamp."
+        },
+        "body": {
+          "zh": "9 月 28 日 00:12 是入库文书录入时间。附注：实体靠泊已于上一日 23:50 完成。",
+          "en": "00:12 on September 28 is the administrative filing time. Note: physical docking completed at 23:50 on the preceding day."
+        },
+        "cost": 1,
+        "group": "warehouse",
+        "kind": "record",
+        "truth": [
+          "filing",
+          "arrival"
+        ],
+        "checks": [
+          "filing",
+          "arrival"
+        ]
+      },
+      {
+        "id": "s2-launch",
+        "title": {
+          "zh": "起飞记录",
+          "en": "Departure log"
+        },
+        "summary": {
+          "zh": "起飞事件是时间线的锚点。",
+          "en": "Departure anchors the event sequence."
+        },
+        "body": {
+          "zh": "9 月 27 日当地时间 23:40 离开出发站。",
+          "en": "The shuttle departed at 23:40 local time on September 27, 2026."
+        },
+        "cost": 1,
+        "group": "launch-control",
+        "kind": "record",
+        "truth": [
+          "dispatch"
+        ],
+        "checks": [
+          "dispatch"
+        ]
+      },
+      {
+        "id": "s2-audit",
+        "title": {
+          "zh": "泊位独立审计",
+          "en": "Independent berth audit"
+        },
+        "summary": {
+          "zh": "审计记录同时说明时区与到港。",
+          "en": "The auditor records both time base and arrival."
+        },
+        "body": {
+          "zh": "审计采用 UTC+8。实际靠泊时间为 9 月 27 日 23:50。00:12 只是入库文书的录入时间。",
+          "en": "This audit uses UTC+8. Physical docking occurred at 23:50 on September 27; 00:12 on September 28 was paperwork filing only."
+        },
+        "cost": 3,
+        "group": "port-auditor",
+        "kind": "record",
+        "truth": [
+          "arrival",
+          "offset",
+          "filing"
+        ],
+        "checks": [
+          "arrival",
+          "offset",
+          "filing"
+        ]
+      },
+      {
+        "id": "s2-rumor",
+        "title": {
+          "zh": "目击者转述",
+          "en": "Witness retelling"
+        },
+        "summary": {
+          "zh": "“我记得肯定过了十二点”。",
+          "en": "I remember it was definitely after midnight."
+        },
+        "body": {
+          "zh": "转述者没有说明是在看货物到港还是文书登记，也没有可靠时间记录。",
+          "en": "The witness does not distinguish docking from filing and has no reliable timestamp."
+        },
+        "cost": 1,
+        "group": "social",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "arrival",
+          "filing"
+        ]
+      }
+    ],
+    "tactics": [
+      {
+        "id": "timebase",
+        "label": {
+          "zh": "统一时区，区分事件",
+          "en": "Normalize clocks and events"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "stamp",
+        "label": {
+          "zh": "把盖章当作到港",
+          "en": "Treat filing as arrival"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "memory",
+        "label": {
+          "zh": "以目击者记忆为准",
+          "en": "Trust the witness memory"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "overturn",
+        "label": {
+          "zh": "推翻迟到指控",
+          "en": "Overturn the late-arrival claim"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "focus": [],
+    "sequence": [
+      {
+        "id": "filed",
+        "label": {
+          "zh": "入库登记 00:12",
+          "en": "Paperwork filed 00:12"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "departed",
+        "label": {
+          "zh": "起飞 23:40（港口）",
+          "en": "Departed 23:40 (port)"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "docked",
+        "label": {
+          "zh": "靠泊 15:50（UTC）",
+          "en": "Docked 15:50 (UTC)"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "resources": [],
+    "resource_budget": 0,
+    "routes": [
+      {
+        "id": "camera-route",
+        "title": {
+          "zh": "校时申诉",
+          "en": "Clock-normalized appeal"
+        },
+        "facts": [
+          "arrival",
+          "offset",
+          "filing"
+        ],
+        "tactic": "timebase",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "",
+        "sequence": [
+          "departed",
+          "docked",
+          "filed"
+        ],
+        "allocation": {}
+      }
+    ],
+    "example": {
+      "evidence": [
+        "s2-camera",
+        "s2-clock",
+        "s2-receipt"
+      ],
+      "tactic": "timebase",
+      "target": "overturn",
+      "focus": "",
+      "sequence": [
+        "departed",
+        "docked",
+        "filed"
+      ],
+      "allocation": {},
+      "argument": ""
+    },
+    "manifest_hash": "0831e9455d4186d99e3a7836b4c699a7e3293a92e00e72bc7dec9595e67c0cbd",
+    "manifest": {
+      "schema": 1,
+      "id": "midnight-cargo",
+      "version": 1,
+      "title": "Midnight Cargo",
+      "objective": "Show arrival before local midnight and put the events in order.",
+      "budget": 5,
+      "slots": 3,
+      "facts": {
+        "arrival": "Does the source record physical arrival on September 27 at 15:50 UTC or 23:50 UTC+8?",
+        "offset": "Does the source establish that local port time is UTC+8?",
+        "filing": "Does the source distinguish filing at 00:12 on September 28 from physical docking earlier?",
+        "dispatch": "Does the source record departure at 23:40 local time on September 27?"
+      },
+      "tactics": [
+        "timebase",
+        "stamp",
+        "memory"
+      ],
+      "targets": [
+        "overturn"
+      ],
+      "focus": [],
+      "sequence": [
+        "filed",
+        "departed",
+        "docked"
+      ],
+      "resources": [],
+      "resource_budget": 0,
+      "routes": [
+        {
+          "id": "camera-route",
+          "facts": [
+            "arrival",
+            "offset",
+            "filing"
+          ],
+          "tactic": "timebase",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "",
+          "sequence": [
+            "departed",
+            "docked",
+            "filed"
+          ],
+          "allocation": {}
+        }
+      ],
+      "evidence": [
+        {
+          "id": "s2-camera",
+          "kind": "web",
+          "cost": 2,
+          "group": "camera",
+          "content": "At 15:50 UTC on September 27, 2026, the cargo shuttle physically docked. The earlier frame shows an empty berth.",
+          "checks": [
+            "arrival"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s2-camera.txt",
+          "sha256": "36af6560baf7e1beeee64ca78e854b3b7a4efac8bf713e1d8648803ab2dd2cad"
+        },
+        {
+          "id": "s2-clock",
+          "kind": "record",
+          "cost": 1,
+          "group": "time-service",
+          "content": "The port uses UTC+8; the camera uses UTC. Camera time 15:50 equals 23:50 at the port on the same date.",
+          "checks": [
+            "offset"
+          ]
+        },
+        {
+          "id": "s2-receipt",
+          "kind": "record",
+          "cost": 1,
+          "group": "warehouse",
+          "content": "00:12 on September 28 is the administrative filing time. Note: physical docking completed at 23:50 on the preceding day.",
+          "checks": [
+            "filing",
+            "arrival"
+          ]
+        },
+        {
+          "id": "s2-launch",
+          "kind": "record",
+          "cost": 1,
+          "group": "launch-control",
+          "content": "The shuttle departed at 23:40 local time on September 27, 2026.",
+          "checks": [
+            "dispatch"
+          ]
+        },
+        {
+          "id": "s2-audit",
+          "kind": "record",
+          "cost": 3,
+          "group": "port-auditor",
+          "content": "This audit uses UTC+8. Physical docking occurred at 23:50 on September 27; 00:12 on September 28 was paperwork filing only.",
+          "checks": [
+            "arrival",
+            "offset",
+            "filing"
+          ]
+        },
+        {
+          "id": "s2-rumor",
+          "kind": "record",
+          "cost": 1,
+          "group": "social",
+          "content": "The witness does not distinguish docking from filing and has no reliable timestamp.",
+          "checks": [
+            "arrival",
+            "filing"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "borrowed-frame",
+    "title": {
+      "zh": "借来的现场",
+      "en": "The Borrowed Frame"
+    },
+    "subtitle": {
+      "zh": "画面是真的，指控就成立吗？",
+      "en": "A real image can support the wrong claim."
+    },
+    "chapter": "03",
+    "difficulty": 3,
+    "mechanic": "focus",
+    "accent": "#bca3e6",
+    "budget": 5,
+    "slots": 3,
+    "briefing": {
+      "zh": "一张检验截图被用来指控本批货物损坏。你需要指出图像里决定性的细节，并找到与之相符的档案。",
+      "en": "An inspection frame is offered as proof that today's cargo was damaged. Pinpoint the decisive visual detail and corroborate it with a record."
+    },
+    "objective": {
+      "zh": "证明该图像不能作为当前 R71 货物的有效证据。",
+      "en": "Show that the frame is not valid evidence about the current R71 shipment."
+    },
+    "defense": {
+      "zh": "图像来自正式检验相机，外观也相似，因此足以证明这批货存在问题。",
+      "en": "The image came from an official inspection camera and the cargo looks similar. That should be enough."
+    },
+    "innovation": {
+      "zh": "标记决定性细节",
+      "en": "Pinpoint the visual clue"
+    },
+    "hint": {
+      "zh": "真图也可能指错对象或引用错日期；序列号和时间戳都能成为路线。",
+      "en": "A genuine image can depict the wrong item or date. Inspect both the serial and timestamp."
+    },
+    "facts": {
+      "serial17": "Do the image pixels show the inspected object's serial as R17?",
+      "old_date": "Do the image pixels show capture date June 3, 2024?",
+      "target71": "Does the registry identify the disputed cargo as R71?",
+      "current_date": "Does the current case record identify the disputed shipment date as September 27, 2026?"
+    },
+    "evidence": [
+      {
+        "id": "s3-frame",
+        "title": {
+          "zh": "检验截图 077",
+          "en": "Inspection frame 077"
+        },
+        "summary": {
+          "zh": "相似的货物，角落里有小字。",
+          "en": "A familiar object. Small details in its corners."
+        },
+        "body": {
+          "zh": "请查看图像中的序列号和拍摄日期，区分被拍摄物体与当前争议货物。",
+          "en": "Read the visible serial and capture date in the image. Distinguish the photographed item from the disputed cargo."
+        },
+        "cost": 2,
+        "group": "inspection-camera",
+        "kind": "image",
+        "truth": [
+          "serial17",
+          "old_date"
+        ],
+        "checks": [
+          "serial17",
+          "old_date"
+        ],
+        "url": "/campaign/cargo-scan.png",
+        "sha256": "4c56e9791f948651d9f29e6c8fba2790b8ff7b742b07185b959e91495b86453a"
+      },
+      {
+        "id": "s3-manifest",
+        "title": {
+          "zh": "本批装箱清单",
+          "en": "Current packing list"
+        },
+        "summary": {
+          "zh": "这一批货的唯一身份。",
+          "en": "The identity of the shipment under dispute."
+        },
+        "body": {
+          "zh": "当前争议货物序列号 R71，运输日期 2026 年 9 月 27 日。",
+          "en": "The disputed shipment is serial R71, shipped on September 27, 2026."
+        },
+        "cost": 2,
+        "group": "shipping",
+        "kind": "web",
+        "truth": [
+          "target71",
+          "current_date"
+        ],
+        "checks": [
+          "target71",
+          "current_date"
+        ],
+        "url": "/campaign/s3-manifest.txt",
+        "sha256": "6f383601942aab722263090f2ce507487e37755c7a5d50a1639d32851f08c3c4"
+      },
+      {
+        "id": "s3-archive",
+        "title": {
+          "zh": "影像归档索引",
+          "en": "Frame archive index"
+        },
+        "summary": {
+          "zh": "旧检验图像的归档日期。",
+          "en": "The archive date of older inspection frames."
+        },
+        "body": {
+          "zh": "编号 077 属于 2024 年 6 月 3 日检验批次。当前索赔属于 2026 年 9 月 27 日货运批次。",
+          "en": "Frame 077 belongs to the June 3, 2024 inspection batch. The current claim concerns the September 27, 2026 shipment."
+        },
+        "cost": 1,
+        "group": "archive",
+        "kind": "record",
+        "truth": [
+          "current_date"
+        ],
+        "checks": [
+          "current_date",
+          "target71"
+        ]
+      },
+      {
+        "id": "s3-style",
+        "title": {
+          "zh": "包装外观说明",
+          "en": "Packaging description"
+        },
+        "summary": {
+          "zh": "两批货物都使用灰色标准箱。",
+          "en": "Both batches used standard gray cases."
+        },
+        "body": {
+          "zh": "标准包装外观相同，外观不能唯一识别货物。",
+          "en": "Standard packaging looks the same and cannot identify a unique shipment."
+        },
+        "cost": 1,
+        "group": "manufacturer",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "target71"
+        ]
+      },
+      {
+        "id": "s3-seal",
+        "title": {
+          "zh": "相机认证书",
+          "en": "Camera certificate"
+        },
+        "summary": {
+          "zh": "认证书能证明相机正常工作。",
+          "en": "The certificate says the camera worked."
+        },
+        "body": {
+          "zh": "相机于 2024 年通过校准；此证书没有说明图像中的货物是 R71。",
+          "en": "The camera was calibrated in 2024. The certificate does not identify the photographed cargo as R71."
+        },
+        "cost": 1,
+        "group": "inspection-camera",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "target71"
+        ]
+      }
+    ],
+    "tactics": [
+      {
+        "id": "identity",
+        "label": {
+          "zh": "追问证据对象",
+          "en": "Challenge the object's identity"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "freshness",
+        "label": {
+          "zh": "追问证据时效",
+          "en": "Challenge the evidence date"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "looks",
+        "label": {
+          "zh": "外观相似就足够",
+          "en": "Similarity is enough"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "overturn",
+        "label": {
+          "zh": "排除这张证物",
+          "en": "Exclude the offered frame"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "focus": [
+      {
+        "id": "serial",
+        "label": {
+          "zh": "序列号区域",
+          "en": "Serial region"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "timestamp",
+        "label": {
+          "zh": "拍摄日期区域",
+          "en": "Timestamp region"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "shell",
+        "label": {
+          "zh": "外壳颜色区域",
+          "en": "Shell color"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "sequence": [],
+    "resources": [],
+    "resource_budget": 0,
+    "routes": [
+      {
+        "id": "wrong-item",
+        "title": {
+          "zh": "对象不符",
+          "en": "Wrong object"
+        },
+        "facts": [
+          "serial17",
+          "target71"
+        ],
+        "tactic": "identity",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "serial",
+        "sequence": [],
+        "allocation": {}
+      },
+      {
+        "id": "wrong-date",
+        "title": {
+          "zh": "时效不符",
+          "en": "Wrong date"
+        },
+        "facts": [
+          "old_date",
+          "current_date"
+        ],
+        "tactic": "freshness",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "timestamp",
+        "sequence": [],
+        "allocation": {}
+      }
+    ],
+    "example": {
+      "evidence": [
+        "s3-frame",
+        "s3-manifest"
+      ],
+      "tactic": "identity",
+      "target": "overturn",
+      "focus": "serial",
+      "sequence": [],
+      "allocation": {},
+      "argument": ""
+    },
+    "manifest_hash": "780128d309429d58ce343db4e465ebb1fea1768d3801a2ff19e1d145a96fe2e4",
+    "manifest": {
+      "schema": 1,
+      "id": "borrowed-frame",
+      "version": 1,
+      "title": "The Borrowed Frame",
+      "objective": "Show that the frame is not valid evidence about the current R71 shipment.",
+      "budget": 5,
+      "slots": 3,
+      "facts": {
+        "serial17": "Do the image pixels show the inspected object's serial as R17?",
+        "old_date": "Do the image pixels show capture date June 3, 2024?",
+        "target71": "Does the registry identify the disputed cargo as R71?",
+        "current_date": "Does the current case record identify the disputed shipment date as September 27, 2026?"
+      },
+      "tactics": [
+        "identity",
+        "freshness",
+        "looks"
+      ],
+      "targets": [
+        "overturn"
+      ],
+      "focus": [
+        "serial",
+        "timestamp",
+        "shell"
+      ],
+      "sequence": [],
+      "resources": [],
+      "resource_budget": 0,
+      "routes": [
+        {
+          "id": "wrong-item",
+          "facts": [
+            "serial17",
+            "target71"
+          ],
+          "tactic": "identity",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "serial",
+          "sequence": [],
+          "allocation": {}
+        },
+        {
+          "id": "wrong-date",
+          "facts": [
+            "old_date",
+            "current_date"
+          ],
+          "tactic": "freshness",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "timestamp",
+          "sequence": [],
+          "allocation": {}
+        }
+      ],
+      "evidence": [
+        {
+          "id": "s3-frame",
+          "kind": "image",
+          "cost": 2,
+          "group": "inspection-camera",
+          "content": "Read the visible serial and capture date in the image. Distinguish the photographed item from the disputed cargo.",
+          "checks": [
+            "serial17",
+            "old_date"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/cargo-scan.png",
+          "sha256": "4c56e9791f948651d9f29e6c8fba2790b8ff7b742b07185b959e91495b86453a"
+        },
+        {
+          "id": "s3-manifest",
+          "kind": "web",
+          "cost": 2,
+          "group": "shipping",
+          "content": "The disputed shipment is serial R71, shipped on September 27, 2026.",
+          "checks": [
+            "target71",
+            "current_date"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s3-manifest.txt",
+          "sha256": "6f383601942aab722263090f2ce507487e37755c7a5d50a1639d32851f08c3c4"
+        },
+        {
+          "id": "s3-archive",
+          "kind": "record",
+          "cost": 1,
+          "group": "archive",
+          "content": "Frame 077 belongs to the June 3, 2024 inspection batch. The current claim concerns the September 27, 2026 shipment.",
+          "checks": [
+            "current_date",
+            "target71"
+          ]
+        },
+        {
+          "id": "s3-style",
+          "kind": "record",
+          "cost": 1,
+          "group": "manufacturer",
+          "content": "Standard packaging looks the same and cannot identify a unique shipment.",
+          "checks": [
+            "target71"
+          ]
+        },
+        {
+          "id": "s3-seal",
+          "kind": "record",
+          "cost": 1,
+          "group": "inspection-camera",
+          "content": "The camera was calibrated in 2024. The certificate does not identify the photographed cargo as R71.",
+          "checks": [
+            "target71"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "id": "echo-chamber",
+    "title": {
+      "zh": "回声警报",
+      "en": "The Echo Alarm"
+    },
+    "subtitle": {
+      "zh": "三个声音，可能只有一个来源。",
+      "en": "Three voices may have only one source."
+    },
+    "chapter": "04",
+    "difficulty": 4,
+    "mechanic": "provenance",
+    "accent": "#80c9b9",
+    "budget": 6,
+    "slots": 3,
+    "briefing": {
+      "zh": "三家媒体同时报道燃料泄漏，港口即将封锁。追溯转载关系，找到真正独立的证据。",
+      "en": "Three outlets report a fuel leak and the port is about to close. Trace the copied reports and find independent evidence."
+    },
+    "objective": {
+      "zh": "判断泄漏指控是否得到独立证据支持，推翻缺乏依据的封锁。",
+      "en": "Challenge the closure by checking whether independent evidence supports a leak."
+    },
+    "defense": {
+      "zh": "已经有三家媒体确认泄漏。报道数量本身就是相互印证。",
+      "en": "Three outlets have confirmed the leak. The number of reports itself is corroboration."
+    },
+    "innovation": {
+      "zh": "追溯来源关系",
+      "en": "Trace source independence"
+    },
+    "hint": {
+      "zh": "看文章引用的原始通报。传感器和维修部门才是不同来源。",
+      "en": "Follow the reports back to the original bulletin. Sensors and maintenance are separate sources."
+    },
+    "facts": {
+      "normal": "Does a direct gas sensor reading show 0.02 units, below the leak threshold of 0.10, in the disputed window?",
+      "vent": "Does a maintenance record identify the plume as a scheduled inert-gas vent rather than leaking fuel?",
+      "retracted": "Does the original bulletin explicitly retract the fuel-leak claim?",
+      "copied": "Does this report explicitly cite Bulletin B-19 rather than offer an independent observation?"
+    },
+    "evidence": [
+      {
+        "id": "s4-news-a",
+        "title": {
+          "zh": "轨道日报",
+          "en": "Orbital Daily"
+        },
+        "summary": {
+          "zh": "头条：燃料泄漏已确认。",
+          "en": "Headline: fuel leak confirmed."
+        },
+        "body": {
+          "zh": "报道引用通讯台通报 B-19；记者没有到现场，也没有独立观测。",
+          "en": "This article cites communications bulletin B-19. Its reporter made no independent observation."
+        },
+        "cost": 1,
+        "group": "bulletin-b19",
+        "kind": "record",
+        "truth": [
+          "copied"
+        ],
+        "checks": [
+          "copied"
+        ]
+      },
+      {
+        "id": "s4-news-b",
+        "title": {
+          "zh": "港口速报",
+          "en": "Port Flash"
+        },
+        "summary": {
+          "zh": "第二家媒体也报道了同一警报。",
+          "en": "A second outlet repeats the alarm."
+        },
+        "body": {
+          "zh": "本文转载轨道日报，原始来源仍为 B-19，没有新增观测。",
+          "en": "This article copies Orbital Daily, whose original source is B-19. It adds no independent observation."
+        },
+        "cost": 1,
+        "group": "bulletin-b19",
+        "kind": "record",
+        "truth": [
+          "copied"
+        ],
+        "checks": [
+          "copied"
+        ]
+      },
+      {
+        "id": "s4-news-c",
+        "title": {
+          "zh": "航线新闻",
+          "en": "Route News"
+        },
+        "summary": {
+          "zh": "第三份报道让指控看起来更强。",
+          "en": "A third report makes the claim seem stronger."
+        },
+        "body": {
+          "zh": "航线新闻基于 B-19 整理消息，没有派驻记者。",
+          "en": "Route News compiled this story from B-19 without an on-site reporter."
+        },
+        "cost": 1,
+        "group": "bulletin-b19",
+        "kind": "record",
+        "truth": [
+          "copied"
+        ],
+        "checks": [
+          "copied"
+        ]
+      },
+      {
+        "id": "s4-sensor",
+        "title": {
+          "zh": "现场气体传感器",
+          "en": "On-site gas sensor"
+        },
+        "summary": {
+          "zh": "原始读数有明确阈值。",
+          "en": "Raw readings include a published threshold."
+        },
+        "body": {
+          "zh": "争议时段现场读数 0.02，泄漏阈值 0.10。传感器未触发燃料泄漏。",
+          "en": "During the disputed window, the direct gas sensor read 0.02 units against a fuel-leak threshold of 0.10. It did not detect a leak."
+        },
+        "cost": 2,
+        "group": "onsite-sensor",
+        "kind": "web",
+        "truth": [
+          "normal"
+        ],
+        "checks": [
+          "normal"
+        ],
+        "url": "/campaign/s4-sensor.txt",
+        "sha256": "2be11954ed611f95f4295e2afe822ee27aa54d0b64a0135dc1effbe67ec83ee8"
+      },
+      {
+        "id": "s4-service",
+        "title": {
+          "zh": "排气维护排程",
+          "en": "Vent maintenance schedule"
+        },
+        "summary": {
+          "zh": "白色气团可能另有来由。",
+          "en": "There may be another explanation for the plume."
+        },
+        "body": {
+          "zh": "当时正在进行已登记的惰性气体排放，并非燃料泄漏。维护部门独立于通讯台。",
+          "en": "The plume came from a scheduled inert-gas vent, not leaking fuel. Maintenance is independent of the communications desk."
+        },
+        "cost": 2,
+        "group": "maintenance",
+        "kind": "record",
+        "truth": [
+          "vent"
+        ],
+        "checks": [
+          "vent"
+        ]
+      },
+      {
+        "id": "s4-correction",
+        "title": {
+          "zh": "原始通报更正",
+          "en": "Original bulletin correction"
+        },
+        "summary": {
+          "zh": "B-19 的编辑记录已更新。",
+          "en": "The edit history of B-19 has changed."
+        },
+        "body": {
+          "zh": "通讯台撤回 B-19 中的燃料泄漏指控；最初误将计划排气当成泄漏。",
+          "en": "The communications desk retracts the fuel-leak claim in B-19. A scheduled vent was initially mistaken for a leak."
+        },
+        "cost": 2,
+        "group": "bulletin-b19",
+        "kind": "web",
+        "truth": [
+          "retracted"
+        ],
+        "checks": [
+          "retracted"
+        ],
+        "url": "/campaign/s4-correction.txt",
+        "sha256": "e9b68afc4e674d337cf325ea62665417865776ce3b6b21190e2cdb3e47788f5c"
+      }
+    ],
+    "tactics": [
+      {
+        "id": "independence",
+        "label": {
+          "zh": "按独立来源计证据",
+          "en": "Count independent sources"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "majority",
+        "label": {
+          "zh": "按报道数量投票",
+          "en": "Count headlines"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "silence",
+        "label": {
+          "zh": "删除不利报道",
+          "en": "Discard unfavorable reports"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "overturn",
+        "label": {
+          "zh": "撤销无依据封锁",
+          "en": "Overturn the unsupported closure"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "focus": [
+      {
+        "id": "bulletin-b19",
+        "label": {
+          "zh": "B-19 通讯台",
+          "en": "B-19 communications desk"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "onsite-sensor",
+        "label": {
+          "zh": "现场传感器",
+          "en": "On-site sensor"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "maintenance",
+        "label": {
+          "zh": "维修部门",
+          "en": "Maintenance"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "sequence": [],
+    "resources": [],
+    "resource_budget": 0,
+    "routes": [
+      {
+        "id": "independent-records",
+        "title": {
+          "zh": "独立观测",
+          "en": "Independent observations"
+        },
+        "facts": [
+          "normal",
+          "vent"
+        ],
+        "tactic": "independence",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "bulletin-b19",
+        "sequence": [],
+        "allocation": {}
+      },
+      {
+        "id": "withdrawn-source",
+        "title": {
+          "zh": "原始来源撤回",
+          "en": "Retracted original"
+        },
+        "facts": [
+          "normal",
+          "retracted"
+        ],
+        "tactic": "independence",
+        "target": "overturn",
+        "min_groups": 2,
+        "focus": "bulletin-b19",
+        "sequence": [],
+        "allocation": {}
+      }
+    ],
+    "example": {
+      "evidence": [
+        "s4-sensor",
+        "s4-service"
+      ],
+      "tactic": "independence",
+      "target": "overturn",
+      "focus": "bulletin-b19",
+      "sequence": [],
+      "allocation": {},
+      "argument": ""
+    },
+    "manifest_hash": "e3f7237cc1ba79fec32f7fcd2f6cdc412a6064f066af8449bf060ebdceaa2f75",
+    "manifest": {
+      "schema": 1,
+      "id": "echo-chamber",
+      "version": 1,
+      "title": "The Echo Alarm",
+      "objective": "Challenge the closure by checking whether independent evidence supports a leak.",
+      "budget": 6,
+      "slots": 3,
+      "facts": {
+        "normal": "Does a direct gas sensor reading show 0.02 units, below the leak threshold of 0.10, in the disputed window?",
+        "vent": "Does a maintenance record identify the plume as a scheduled inert-gas vent rather than leaking fuel?",
+        "retracted": "Does the original bulletin explicitly retract the fuel-leak claim?",
+        "copied": "Does this report explicitly cite Bulletin B-19 rather than offer an independent observation?"
+      },
+      "tactics": [
+        "independence",
+        "majority",
+        "silence"
+      ],
+      "targets": [
+        "overturn"
+      ],
+      "focus": [
+        "bulletin-b19",
+        "onsite-sensor",
+        "maintenance"
+      ],
+      "sequence": [],
+      "resources": [],
+      "resource_budget": 0,
+      "routes": [
+        {
+          "id": "independent-records",
+          "facts": [
+            "normal",
+            "vent"
+          ],
+          "tactic": "independence",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "bulletin-b19",
+          "sequence": [],
+          "allocation": {}
+        },
+        {
+          "id": "withdrawn-source",
+          "facts": [
+            "normal",
+            "retracted"
+          ],
+          "tactic": "independence",
+          "target": "overturn",
+          "min_groups": 2,
+          "focus": "bulletin-b19",
+          "sequence": [],
+          "allocation": {}
+        }
+      ],
+      "evidence": [
+        {
+          "id": "s4-news-a",
+          "kind": "record",
+          "cost": 1,
+          "group": "bulletin-b19",
+          "content": "This article cites communications bulletin B-19. Its reporter made no independent observation.",
+          "checks": [
+            "copied"
+          ]
+        },
+        {
+          "id": "s4-news-b",
+          "kind": "record",
+          "cost": 1,
+          "group": "bulletin-b19",
+          "content": "This article copies Orbital Daily, whose original source is B-19. It adds no independent observation.",
+          "checks": [
+            "copied"
+          ]
+        },
+        {
+          "id": "s4-news-c",
+          "kind": "record",
+          "cost": 1,
+          "group": "bulletin-b19",
+          "content": "Route News compiled this story from B-19 without an on-site reporter.",
+          "checks": [
+            "copied"
+          ]
+        },
+        {
+          "id": "s4-sensor",
+          "kind": "web",
+          "cost": 2,
+          "group": "onsite-sensor",
+          "content": "During the disputed window, the direct gas sensor read 0.02 units against a fuel-leak threshold of 0.10. It did not detect a leak.",
+          "checks": [
+            "normal"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s4-sensor.txt",
+          "sha256": "2be11954ed611f95f4295e2afe822ee27aa54d0b64a0135dc1effbe67ec83ee8"
+        },
+        {
+          "id": "s4-service",
+          "kind": "record",
+          "cost": 2,
+          "group": "maintenance",
+          "content": "The plume came from a scheduled inert-gas vent, not leaking fuel. Maintenance is independent of the communications desk.",
+          "checks": [
+            "vent"
+          ]
+        },
+        {
+          "id": "s4-correction",
+          "kind": "web",
+          "cost": 2,
+          "group": "bulletin-b19",
+          "content": "The communications desk retracts the fuel-leak claim in B-19. A scheduled vent was initially mistaken for a leak.",
+          "checks": [
+            "retracted"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s4-correction.txt",
+          "sha256": "e9b68afc4e674d337cf325ea62665417865776ce3b6b21190e2cdb3e47788f5c"
+        }
+      ]
+    }
+  },
+  {
+    "id": "last-shuttle",
+    "title": {
+      "zh": "最后一艘救援艇",
+      "en": "The Last Shuttle"
+    },
+    "subtitle": {
+      "zh": "找到可行路线，也要付得起代价。",
+      "en": "A route needs proof—and enough power."
+    },
+    "chapter": "05",
+    "difficulty": 5,
+    "mechanic": "allocation",
+    "accent": "#e39376",
+    "budget": 7,
+    "slots": 3,
+    "briefing": {
+      "zh": "六名旅客等待转移，救援艇只剩五格可分配能源。北侧有碎片，南侧有逆流。用证据选择路线，再把能源分配到真正需要的位置。",
+      "en": "Six travelers await transfer. The shuttle has five power cells: debris threatens the north route, currents slow the south. Prove a route works and power it correctly."
+    },
+    "objective": {
+      "zh": "以两种可行方案之一完成六人的撤离；总能源不能超过五格。",
+      "en": "Build either valid evacuation plan for all six travelers using at most five power cells."
+    },
+    "defense": {
+      "zh": "两侧通道都有风险。最安全的选择就是继续等待。",
+      "en": "Both corridors are risky. Waiting must be the safest choice."
+    },
+    "innovation": {
+      "zh": "双路线与资源取舍",
+      "en": "Two routes, one power budget"
+    },
+    "hint": {
+      "zh": "北线需要护盾 3＋引导 2；南线需要引擎 3＋引导 2。路线和反驳都要与所选证据一致。",
+      "en": "North needs shield 3 + guidance 2. South needs engine 3 + guidance 2. Match the evidence and argument to the chosen plan."
+    },
+    "facts": {
+      "north_safe": "Does the visual corridor scan say NORTH can be traversed with shield at least 3 and guidance at least 2?",
+      "south_safe": "Does the visual corridor scan say SOUTH can be traversed with engine at least 3 and guidance at least 2?",
+      "capacity": "Does the manifest establish six travelers and a shuttle capacity of six, so everyone fits?",
+      "north_window": "Does current navigation data say the north route arrives at 22:06, before the 22:10 deadline?",
+      "south_window": "Does current navigation data say the south route arrives at 22:08 with engine 3, before the 22:10 deadline?"
+    },
+    "evidence": [
+      {
+        "id": "s5-scan",
+        "title": {
+          "zh": "通道扫描图",
+          "en": "Corridor scan"
+        },
+        "summary": {
+          "zh": "不同通道要求不同设备配额。",
+          "en": "Each corridor requires a different power allocation."
+        },
+        "body": {
+          "zh": "查看北、南通道的最低能源要求；当前扫描有效至 22:10。",
+          "en": "Read the minimum power requirements for north and south. The current scan is valid until 22:10."
+        },
+        "cost": 3,
+        "group": "scan-array",
+        "kind": "image",
+        "truth": [
+          "north_safe",
+          "south_safe"
+        ],
+        "checks": [
+          "north_safe",
+          "south_safe"
+        ],
+        "url": "/campaign/rescue-map.png",
+        "sha256": "1f3f0088f0c401db2f1b5b6d73a7e2bbe4092b0b1a3bca4a17f572c76d5e2e4b"
+      },
+      {
+        "id": "s5-manifest",
+        "title": {
+          "zh": "乘员与座位清单",
+          "en": "Passenger and seat manifest"
+        },
+        "summary": {
+          "zh": "不要遗漏救援艇的承载上限。",
+          "en": "Check the shuttle's capacity."
+        },
+        "body": {
+          "zh": "等待撤离旅客六人，救援艇核定座位六个。所有人可一次登艇。",
+          "en": "Six travelers await evacuation and the shuttle has six certified seats. Everyone can board on one trip."
+        },
+        "cost": 1,
+        "group": "passenger-control",
+        "kind": "record",
+        "truth": [
+          "capacity"
+        ],
+        "checks": [
+          "capacity"
+        ]
+      },
+      {
+        "id": "s5-north",
+        "title": {
+          "zh": "北线导航解算",
+          "en": "North navigation solution"
+        },
+        "summary": {
+          "zh": "北线较快，但穿过碎片区。",
+          "en": "Faster, through a debris field."
+        },
+        "body": {
+          "zh": "当前导航解算：北线在护盾 3、引导 2 的配置下于 22:06 到达，早于 22:10 截止时间。",
+          "en": "Current north navigation: with shield 3 and guidance 2, arrival is 22:06, before the 22:10 deadline."
+        },
+        "cost": 2,
+        "group": "navigation",
+        "kind": "web",
+        "truth": [
+          "north_window"
+        ],
+        "checks": [
+          "north_window"
+        ],
+        "url": "/campaign/s5-north.txt",
+        "sha256": "ccb72770ab2a272dfd67890b58cdca30508c484bfd026e6ef3824485dece7cb1"
+      },
+      {
+        "id": "s5-south",
+        "title": {
+          "zh": "南线导航解算",
+          "en": "South navigation solution"
+        },
+        "summary": {
+          "zh": "逆流需要增加引擎输出。",
+          "en": "The current requires extra engine power."
+        },
+        "body": {
+          "zh": "当前导航解算：南线在引擎 3、引导 2 的配置下于 22:08 到达，早于 22:10 截止时间。",
+          "en": "Current south navigation: with engine 3 and guidance 2, arrival is 22:08, before the 22:10 deadline."
+        },
+        "cost": 2,
+        "group": "navigation",
+        "kind": "web",
+        "truth": [
+          "south_window"
+        ],
+        "checks": [
+          "south_window"
+        ],
+        "url": "/campaign/s5-south.txt",
+        "sha256": "e6c9013e086efd44725933f1ef7789ed065b4cc6638f531ec0c05612577fec9e"
+      },
+      {
+        "id": "s5-old",
+        "title": {
+          "zh": "上周安全图",
+          "en": "Last week's safety map"
+        },
+        "summary": {
+          "zh": "旧地图显示两条通道都畅通。",
+          "en": "An older map shows both corridors clear."
+        },
+        "body": {
+          "zh": "地图绘于上周，未包含本次碎片带和逆流。不能说明当前通道安全。",
+          "en": "The map was drawn last week and omits the present debris and current. It does not establish current safety."
+        },
+        "cost": 1,
+        "group": "old-chart",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "north_safe",
+          "south_safe"
+        ]
+      },
+      {
+        "id": "s5-ad",
+        "title": {
+          "zh": "救援艇宣传资料",
+          "en": "Shuttle brochure"
+        },
+        "summary": {
+          "zh": "宣传语写着“全天候救援”。",
+          "en": "The brochure promises all-weather rescue."
+        },
+        "body": {
+          "zh": "宣传资料没有提供当前设备配额、时间窗或核定座位。",
+          "en": "The brochure gives no current power allocation, arrival window or certified seat count."
+        },
+        "cost": 1,
+        "group": "marketing",
+        "kind": "record",
+        "truth": [],
+        "checks": [
+          "capacity"
+        ]
+      }
+    ],
+    "tactics": [
+      {
+        "id": "shield-plan",
+        "label": {
+          "zh": "用防护化解北线风险",
+          "en": "Mitigate north with shielding"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "engine-plan",
+        "label": {
+          "zh": "用动力化解南线风险",
+          "en": "Beat the south current with power"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "wait",
+        "label": {
+          "zh": "等待所有风险消失",
+          "en": "Wait for all risk to disappear"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "north",
+        "label": {
+          "zh": "北侧通道",
+          "en": "North corridor"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "south",
+        "label": {
+          "zh": "南侧通道",
+          "en": "South corridor"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "focus": [],
+    "sequence": [],
+    "resources": [
+      {
+        "id": "shield",
+        "label": {
+          "zh": "护盾",
+          "en": "Shield"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "engine",
+        "label": {
+          "zh": "引擎",
+          "en": "Engine"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      },
+      {
+        "id": "guidance",
+        "label": {
+          "zh": "引导",
+          "en": "Guidance"
+        },
+        "detail": {
+          "zh": "",
+          "en": ""
+        }
+      }
+    ],
+    "resource_budget": 5,
+    "routes": [
+      {
+        "id": "north-plan",
+        "title": {
+          "zh": "北线护盾方案",
+          "en": "Shielded north route"
+        },
+        "facts": [
+          "north_safe",
+          "capacity",
+          "north_window"
+        ],
+        "tactic": "shield-plan",
+        "target": "north",
+        "min_groups": 3,
+        "focus": "",
+        "sequence": [],
+        "allocation": {
+          "shield": 3,
+          "guidance": 2
+        }
+      },
+      {
+        "id": "south-plan",
+        "title": {
+          "zh": "南线动力方案",
+          "en": "Powered south route"
+        },
+        "facts": [
+          "south_safe",
+          "capacity",
+          "south_window"
+        ],
+        "tactic": "engine-plan",
+        "target": "south",
+        "min_groups": 3,
+        "focus": "",
+        "sequence": [],
+        "allocation": {
+          "engine": 3,
+          "guidance": 2
+        }
+      }
+    ],
+    "example": {
+      "evidence": [
+        "s5-scan",
+        "s5-manifest",
+        "s5-north"
+      ],
+      "tactic": "shield-plan",
+      "target": "north",
+      "focus": "",
+      "sequence": [],
+      "allocation": {
+        "shield": 3,
+        "engine": 0,
+        "guidance": 2
+      },
+      "argument": ""
+    },
+    "manifest_hash": "6053fb8585c8db6ab72e2c8d05f16528a038dfb17c138c73e01617753bfaae52",
+    "manifest": {
+      "schema": 1,
+      "id": "last-shuttle",
+      "version": 1,
+      "title": "The Last Shuttle",
+      "objective": "Build either valid evacuation plan for all six travelers using at most five power cells.",
+      "budget": 7,
+      "slots": 3,
+      "facts": {
+        "north_safe": "Does the visual corridor scan say NORTH can be traversed with shield at least 3 and guidance at least 2?",
+        "south_safe": "Does the visual corridor scan say SOUTH can be traversed with engine at least 3 and guidance at least 2?",
+        "capacity": "Does the manifest establish six travelers and a shuttle capacity of six, so everyone fits?",
+        "north_window": "Does current navigation data say the north route arrives at 22:06, before the 22:10 deadline?",
+        "south_window": "Does current navigation data say the south route arrives at 22:08 with engine 3, before the 22:10 deadline?"
+      },
+      "tactics": [
+        "shield-plan",
+        "engine-plan",
+        "wait"
+      ],
+      "targets": [
+        "north",
+        "south"
+      ],
+      "focus": [],
+      "sequence": [],
+      "resources": [
+        "shield",
+        "engine",
+        "guidance"
+      ],
+      "resource_budget": 5,
+      "routes": [
+        {
+          "id": "north-plan",
+          "facts": [
+            "north_safe",
+            "capacity",
+            "north_window"
+          ],
+          "tactic": "shield-plan",
+          "target": "north",
+          "min_groups": 3,
+          "focus": "",
+          "sequence": [],
+          "allocation": {
+            "shield": 3,
+            "guidance": 2
+          }
+        },
+        {
+          "id": "south-plan",
+          "facts": [
+            "south_safe",
+            "capacity",
+            "south_window"
+          ],
+          "tactic": "engine-plan",
+          "target": "south",
+          "min_groups": 3,
+          "focus": "",
+          "sequence": [],
+          "allocation": {
+            "engine": 3,
+            "guidance": 2
+          }
+        }
+      ],
+      "evidence": [
+        {
+          "id": "s5-scan",
+          "kind": "image",
+          "cost": 3,
+          "group": "scan-array",
+          "content": "Read the minimum power requirements for north and south. The current scan is valid until 22:10.",
+          "checks": [
+            "north_safe",
+            "south_safe"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/rescue-map.png",
+          "sha256": "1f3f0088f0c401db2f1b5b6d73a7e2bbe4092b0b1a3bca4a17f572c76d5e2e4b"
+        },
+        {
+          "id": "s5-manifest",
+          "kind": "record",
+          "cost": 1,
+          "group": "passenger-control",
+          "content": "Six travelers await evacuation and the shuttle has six certified seats. Everyone can board on one trip.",
+          "checks": [
+            "capacity"
+          ]
+        },
+        {
+          "id": "s5-north",
+          "kind": "web",
+          "cost": 2,
+          "group": "navigation",
+          "content": "Current north navigation: with shield 3 and guidance 2, arrival is 22:06, before the 22:10 deadline.",
+          "checks": [
+            "north_window"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s5-north.txt",
+          "sha256": "ccb72770ab2a272dfd67890b58cdca30508c484bfd026e6ef3824485dece7cb1"
+        },
+        {
+          "id": "s5-south",
+          "kind": "web",
+          "cost": 2,
+          "group": "navigation",
+          "content": "Current south navigation: with engine 3 and guidance 2, arrival is 22:08, before the 22:10 deadline.",
+          "checks": [
+            "south_window"
+          ],
+          "url": "https://greybox-arena.zsf197176.chatgpt.site/campaign/s5-south.txt",
+          "sha256": "e6c9013e086efd44725933f1ef7789ed065b4cc6638f531ec0c05612577fec9e"
+        },
+        {
+          "id": "s5-old",
+          "kind": "record",
+          "cost": 1,
+          "group": "old-chart",
+          "content": "The map was drawn last week and omits the present debris and current. It does not establish current safety.",
+          "checks": [
+            "north_safe",
+            "south_safe"
+          ]
+        },
+        {
+          "id": "s5-ad",
+          "kind": "record",
+          "cost": 1,
+          "group": "marketing",
+          "content": "The brochure gives no current power allocation, arrival window or certified seat count.",
+          "checks": [
+            "capacity"
+          ]
+        }
+      ]
+    }
+  }
+]

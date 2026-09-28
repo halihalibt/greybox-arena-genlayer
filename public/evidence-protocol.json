@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "active": "studionet",
+  "networks": {
+    "studionet": {"address": "0x4CB540105c519Ce23912e2Edad5f4c34f25A9D2A", "publisher": "0x22Acaa233b7b985b36ef168F2DE9295334065B15"},
+    "bradbury": {"address": "", "publisher": ""}
+  }
+}
